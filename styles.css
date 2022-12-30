@@ -1,24 +1,31 @@
 :root {
   --custom_white_color: white;
-  --custom_blue_color: #0ea5e9;
-  --custom_grey_color: lightgrey;
+  --custom_blue_color: #0e7490;
+  --custom_article_blue_color: #164e63;
+  --custom_grey_color: #e7e5e4;
+  --custom_grey_text_color: #78716c;
 
   --article_padding: 16px;
+  --container_padding_big: 50px;    /* ".main_container > *" */
+  --container_padding_small: 20px;    /* ".main_container > *" */
   --page_content_main_gap: 3rem;
+  --article_border_radius: 6px;
 }
 
 html, body {
-    background-color: grey;
-    font: 16px sans-serif;
+    background-color: var(--custom_grey_text_color);
+    font-size: 16px;
     color: black;
     margin: 0;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 
 /* for main_container, background and font colors */
 .main_container {
   display: grid;
-  grid-template-columns: 1fr 6fr;
+  grid-template-columns: 1fr 5fr;
   grid-template-areas: 
     "sidebar header"
     "sidebar page_content";
@@ -51,7 +58,7 @@ html, body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 8px;
-  padding: 10px 40px;
+  padding: var(--container_padding_small) var(--container_padding_big);
 }
 
 .header * {
@@ -75,26 +82,37 @@ html, body {
 }
 .header_top_line_left > div {
   background-color: var(--custom_grey_color);
-  border-radius: 6px;
+  border-radius: var(--article_border_radius);
   margin-right: 60px;
   height: 100%;
 }
+
 
 .header_top_line_right {
   display: grid;
   grid-template-columns: auto auto 1fr;
   gap: 16px;
 }
+.header_top_line_right > img.profile_icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
 
 .header_bottom_line_left {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-column-gap: 16px;
-  grid-row-gap: 4px;
 }
-.header_bottom_line_left > img {
+.header_bottom_line_left > img.profile_icon {
   grid-row: 1 / 3;
   grid-column: 1 / 2;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+.header_bottom_line_left > div.greeting{
+  align-self: end;
 }
 
 .header_bottom_line_right {
@@ -103,7 +121,7 @@ html, body {
   grid-gap: 24px;
 }
 button {
-  width: 80px;
+  width: 90px;
   height: 30px;
   border-radius: 12px;
   background-color: var(--custom_blue_color);
@@ -123,14 +141,14 @@ button {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, min-content);
-  gap: 50px;
+  gap: 60px;
   font-weight: bold;
-  padding-top: 10px;
+  padding: var(--container_padding_small);
 }
 
 .sidebar > * {
   display: grid;
-  gap: 8px;
+  gap: 16px;
 }
 
 .sidebar > * > * {
@@ -143,10 +161,6 @@ button {
   justify-self: center;
 }
 
-.sidebar .dashboard {
-  font-size: 1.4rem;
-}
-
 
 /* for the page_content */
 
@@ -155,21 +169,18 @@ button {
   grid-template-columns: 4fr 1fr;
   grid-template-areas: 
   "your_projects_container announcements_container"
-  "your_projects_container trending_container";
+  "your_projects_container trending_container"
+  "your_projects_container .";
   gap: var(--page_content_main_gap);
-  padding: 0 40px;
-  padding-bottom: 40px;
+  padding: var(--container_padding_small) var(--container_padding_big);
+  padding-bottom: var(--container_padding_big);
 }
 
 h2 {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 h3 {
-  margin-bottom: 0;
-}
-
-.page_content * {
-  /* border: 2px solid red; */
+  margin-bottom: 0;  
 }
 
 .your_projects_container {
@@ -178,6 +189,7 @@ h3 {
 
 .announcements_container {
   grid-area: announcements_container;
+  /* height: min-content; */
 }
 
 .trending_container {
@@ -205,6 +217,8 @@ h3 {
   grid-template-rows: min-content 1fr min-content;
   padding: 0 var(--article_padding);
   padding-bottom: var(--article_padding);
+  border-left: 8px solid var(--custom_article_blue_color);
+  border-radius: var(--article_border_radius);
 }
 .your_projects_container .article > div {
   display: grid;
@@ -224,6 +238,7 @@ h3 {
   grid-template-rows: repeat(3, minmax(1fr, 200px));
   padding: 0 var(--article_padding);
   background-color: var(--custom_white_color);
+  border-radius: var(--article_border_radius);
 }
 
 .announcements_container .article {
@@ -235,30 +250,126 @@ h3 {
   border-top: 2px solid var(--custom_grey_color);
 }
 
-.announcement + .announcement {
+.announcements_container p {
+  margin-top: 4px;
 }
 
 
 
-
-
+/* ********************************* */
 /* grid for trending_container */
+/* ********************************* */
 
-.trending_container {
-  margin-top: -20px;
+
+
+.trending_list {
+  /* margin-top: -20px; */
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content repeat(4, 1fr);
+  grid-template-rows: repeat(4, 70px);
+  border-radius: var(--article_border_radius);
+  overflow: hidden;
+
 }
-  
 
-  .trending_container > .article {
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    align-items: center;
-    padding: 4px var(--article_padding);
-  }
+.trending_container .article {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: repeat(2, min-content);
+  align-items: center;
+  padding: 4px var(--article_padding);
+  align-content: center;
+  grid-column-gap: 8px;
+  grid-row-gap: 2px;
+}
 
-  .trending_container > .article > img {
-    grid-row: 1 / 3;
-  }
+.trending_container .article > img {
+  grid-row: 1 / 3;
+}
+.trending_container .article > .account {
+  align-self: end;
+}
+.trending_container .article > .username {
+  align-self: start;
+}
+
+.trending_container img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+
+
+
+/* ********************************* */
+/* font sizes */
+/* ********************************* */
+
+h2, h3 {
+  font-weight: 800;
+}
+h2 {
+  font-size: 1.3rem;
+}
+h3 {
+  font-size: 1.1rem;
+}
+
+/* header font sizes */
+
+.header_top_line_right {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.greeting {
+  font-weight: 800;
+}
+.greeting_name {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+button {
+  font-weight: 600;
+}
+
+
+/* sidebar font sizes */
+
+.sidebar {
+  font-size: 1.2rem;
+}
+
+.sidebar .dashboard {
+  font-size: 1.7rem;
+}
+
+
+/* page_content font sizes */
+
+p {
+  color: var(--custom_grey_text_color);
+}
+
+/* announcement font sizes */
+
+.announcements_container h3 {
+  font-size: 0.9rem;
+}
+
+.announcements_container p {
+  font-size: 0.8rem;
+}
+
+/* trending font sizes */
+
+.trending_container .account {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.trending_container .username {
+  font-size: 0.9rem;
+  color: var(--custom_grey_text_color);
+}
