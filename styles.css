@@ -22,7 +22,10 @@ html, body {
 }
 
 
+/* ********************************* */
 /* for main_container, background and font colors */
+/* ********************************* */
+
 .main_container {
   display: grid;
   grid-template-columns: 1fr 5fr;
@@ -52,7 +55,9 @@ html, body {
 }
 
 
+/* ********************************* */
 /* for the header */
+/* ********************************* */
 
 .header {
   display: grid;
@@ -62,7 +67,6 @@ html, body {
 }
 
 .header * {
-  /* border: 2px solid red; */
   align-items: center;
 }
 
@@ -130,8 +134,9 @@ button {
 }
 
 
-
+/* ********************************* */
 /* for the sidebar */
+/* ********************************* */
 
 .sidebar * {
   align-items: center;
@@ -162,7 +167,9 @@ button {
 }
 
 
+/* ********************************* */
 /* for the page_content */
+/* ********************************* */
 
 .page_content {
   display: grid;
@@ -189,7 +196,6 @@ h3 {
 
 .announcements_container {
   grid-area: announcements_container;
-  /* height: min-content; */
 }
 
 .trending_container {
@@ -197,13 +203,14 @@ h3 {
 }
 
 .article {
-  /* border: 2px green solid; */
   background-color: var(--custom_white_color);
 }
 
 
-
+/* ********************************* */
 /* grid for your_projects_container */
+/* ********************************* */
+
 .your_projects_list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -230,7 +237,9 @@ h3 {
 }
 
 
+/* ********************************* */
 /* grid for announcements_container */
+/* ********************************* */
 
 .announcements_list {
   display: grid;
@@ -255,21 +264,16 @@ h3 {
 }
 
 
-
 /* ********************************* */
 /* grid for trending_container */
 /* ********************************* */
 
-
-
 .trending_list {
-  /* margin-top: -20px; */
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 70px);
+  grid-template-rows: repeat(4, 80px);
   border-radius: var(--article_border_radius);
   overflow: hidden;
-
 }
 
 .trending_container .article {
@@ -300,8 +304,6 @@ h3 {
 }
 
 
-
-
 /* ********************************* */
 /* font sizes */
 /* ********************************* */
@@ -316,7 +318,10 @@ h3 {
   font-size: 1.1rem;
 }
 
+
+/* ********************************* */
 /* header font sizes */
+/* ********************************* */
 
 .header_top_line_right {
   font-size: 1.2rem;
@@ -335,6 +340,7 @@ button {
 }
 
 
+/* ********************************* */
 /* sidebar font sizes */
 
 .sidebar {
@@ -346,12 +352,15 @@ button {
 }
 
 
+/* ********************************* */
 /* page_content font sizes */
 
 p {
   color: var(--custom_grey_text_color);
 }
 
+
+/* ********************************* */
 /* announcement font sizes */
 
 .announcements_container h3 {
@@ -362,6 +371,8 @@ p {
   font-size: 0.8rem;
 }
 
+
+/* ********************************* */
 /* trending font sizes */
 
 .trending_container .account {
